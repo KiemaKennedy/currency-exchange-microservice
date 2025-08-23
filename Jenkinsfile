@@ -26,7 +26,6 @@
 
 // DECLARATIVE 
 // use pipeline, MUST HAVE stages, stage, steps
-
 pipeline {
 	agent any
 	stages {
