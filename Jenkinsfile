@@ -27,11 +27,21 @@
 // DECLARATIVE 
 // use pipeline, MUST HAVE stages, stage, steps
 pipeline {
-	agent any
+	// agent any
+
+	// Use a Docker image as an agent
+	agent {
+    docker {
+        image 'maven:3.9.3-eclipse-temurin-17'
+        label 'my-defined-label'
+        args  '-v /tmp:/tmp'
+    }
+	}
+
 	stages {
 		stage('Build') {
 			steps {
-				echo "Build Stage"
+				sh "mvn --version"
 				echo "Another Step"
 				echo "Last Step"
 			}
