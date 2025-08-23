@@ -17,12 +17,12 @@
 
 // without stages - not mandatory
 
-node {
-	echo "Build"
-	echo "Test"
-	echo "Integration Test"
+// node {
+// 	echo "Build"
+// 	echo "Test"
+// 	echo "Integration Test"
 	
-}
+// }
 
 // DECLARATIVE 
 // use pipeline, MUST HAVE stages, stage, steps
@@ -41,12 +41,7 @@ pipeline {
 		stage ('Test') {
 			steps {
 				echo "Test Stage"
-				Step {
-					echo "Step 1"
-				}
-				Step {
-					echo "Step 2"
-				}
+				
 			}
 		}
 
