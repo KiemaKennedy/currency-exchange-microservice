@@ -50,6 +50,16 @@ pipeline {
 				echo "Integration Stage"
 			}
 		}
+	} post {
+		always {
+			echo 'Always run'
+		}
+		success {
+			echo 'I run when its successful'
+		}
+		failure {
+			echo 'I run when you fail'
+		}
 	}
 }
 
