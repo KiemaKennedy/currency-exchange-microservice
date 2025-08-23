@@ -50,7 +50,8 @@ pipeline {
 				echo "Integration Stage"
 			}
 		}
-	} post {
+	} 
+	post {
 		always {
 			echo 'Always run'
 		}
