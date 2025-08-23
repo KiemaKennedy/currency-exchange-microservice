@@ -1,11 +1,4 @@
 node {
-
-	stage('Clean Workspace') {
-		steps {
-			deleteDir()   // deletes workspace before fetching SCM
-		}
-	}
-
 	stage('Build') {
 		echo "Build"
 	}
