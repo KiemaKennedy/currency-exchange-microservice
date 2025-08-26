@@ -36,11 +36,10 @@ pipeline {
   	}
 
 	environment {
-		// Ensure Jenkins talks to Docker Desktop via Windows named pipe
-		DOCKER_HOST       = 'npipe:////./pipe/docker_engine'
-		DOCKER_TLS_VERIFY = '0'
-		DOCKER_CERT_PATH  = ''
-  	}
+		dockerHome = tool 'myDocker'
+		mavenHome = tool 'myMaven'
+		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
+	}
 
 	// Use a Docker image as an agent
 	// agent {
@@ -53,14 +52,6 @@ pipeline {
 
 
 	stages {
-
-		stage('Docker sanity') {
-			steps {
-				bat 'where docker'
-				bat 'docker version'
-				bat 'docker info'
-			}
-    	}
 		stage('Checkout') {
 			steps {
 				sh "mvn --version"
