@@ -28,17 +28,28 @@
 // use pipeline, MUST HAVE stages, stage, steps
 pipeline {
 
-	agent any
-  		tools { 
-		jdk 'jdk11'; 
-		maven 'myMaven' 
+	agent {
+		docker {
+		image 'maven:3.9.6-eclipse-temurin-11'
+		args '-v $HOME/.m2:/root/.m2'   // cache dependencies
 		}
+  	}
 
 	environment {
-		dockerHome = tool 'myDocker'
-		mavenHome = tool 'myMaven'
-		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
-	}
+		// Ensure Jenkins talks to Docker Desktop via Windows named pipe
+		DOCKER_HOST       = 'npipe:////./pipe/docker_engine'
+		DOCKER_TLS_VERIFY = '0'
+		DOCKER_CERT_PATH  = ''
+  	}
+
+	stages {
+		stage('Docker sanity') {
+		steps {
+			bat 'where docker'
+			bat 'docker version'
+			bat 'docker info'
+		}
+    }
 
 	// Use a Docker image as an agent
 	// agent {
