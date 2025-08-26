@@ -29,7 +29,7 @@
 		<surefire.version>2.22.1</surefire.version>
 		<failsafe.version>2.22.1</failsafe.version>
 
-		<jacoco.version>0.8.11</jacoco.version>
+		<jacoco.version>0.8.3</jacoco.version>
 		<jacoco.path>${settings.localRepository}/org/jacoco/org.jacoco.agent/${jacoco.version}/org.jacoco.agent-${jacoco.version}-runtime.jar</jacoco.path>
 		<jacoco.utReport>${project.build.directory}/jacoco.exec</jacoco.utReport>
 		<jacoco.itReport>${project.build.directory}/jacoco-it.exec</jacoco.itReport>
@@ -89,15 +89,9 @@
 		</dependency>
 		<!-- Add ons -->
 		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-java</artifactId>
-			<version>4.2.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-junit</artifactId>
-			<version>4.2.0</version>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured-all</artifactId>
+			<version>4.0.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -106,7 +100,18 @@
 			<version>4.2.0</version>
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>2.3.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>2.3.1</version>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.jacoco</groupId>
 			<artifactId>org.jacoco.agent</artifactId>
@@ -128,10 +133,9 @@
 		<dependency>
 			<groupId>io.rest-assured</groupId>
 			<artifactId>rest-assured</artifactId>
-			<version>5.4.0</version>
+			<version>4.1.2</version>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 
 	<dependencyManagement>
