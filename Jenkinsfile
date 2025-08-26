@@ -41,7 +41,7 @@ pipeline {
 		stage('Build') {
 			steps {
 				sh "mvn --version"
-				sh "node --version"
+				// sh "node --version"
 				// Variables
 				echo "$PATH"
 				echo "BUILD NUMBER ${env.BUILD_NUMBER}"
