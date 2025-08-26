@@ -50,6 +50,7 @@ pipeline {
 			bat 'docker info'
 		}
     }
+	}
 
 	// Use a Docker image as an agent
 	// agent {
