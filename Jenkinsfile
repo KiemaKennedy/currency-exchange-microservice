@@ -27,15 +27,22 @@
 // DECLARATIVE 
 // use pipeline, MUST HAVE stages, stage, steps
 pipeline {
-	// agent any
+
+	agent any
+
+	environment {
+		dockerHome = tool 'myDocker'
+		mavenHome = tool 'myMaven'
+		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
+	}
 
 	// Use a Docker image as an agent
-	agent {
-		docker {
-			image 'maven:3.9.2'
+	// agent {
+	// 	docker {
+	// 		image 'maven:3.9.2'
 		
-		}
-	}
+	// 	}
+	// }
 
 	stages {
 		stage('Build') {
