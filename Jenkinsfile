@@ -42,16 +42,6 @@ pipeline {
 		DOCKER_CERT_PATH  = ''
   	}
 
-	stages {
-		stage('Docker sanity') {
-		steps {
-			bat 'where docker'
-			bat 'docker version'
-			bat 'docker info'
-		}
-    }
-	}
-
 	// Use a Docker image as an agent
 	// agent {
 	// 	docker {
@@ -63,6 +53,14 @@ pipeline {
 
 
 	stages {
+
+		stage('Docker sanity') {
+			steps {
+				bat 'where docker'
+				bat 'docker version'
+				bat 'docker info'
+			}
+    	}
 		stage('Checkout') {
 			steps {
 				sh "mvn --version"
