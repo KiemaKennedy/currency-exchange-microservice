@@ -63,6 +63,7 @@ pipeline {
 			}
 		}
 		
+		// Run unit test
 		stage ('Test') {
 			steps {
 				sh "mvn test"
@@ -75,6 +76,41 @@ pipeline {
 				sh "mvn failsafe:integration-test failsafe:verify"
 			}
 		}
+
+		stage('Package Stage') {
+			steps {
+				sh "mvn package -DskipTests"
+			}
+		}
+
+		stage('Build Docker Image') {
+			steps {
+				// docker build -t repo:$env.BUILD_TAG  - old way
+				script{
+					dockerImage = docker.build("kennedy109/currency-exchange-devops:${env.BUILD_TAG}")
+
+
+				}
+					
+
+			}
+		}
+
+		stage('Push Docker Image') {
+			steps {
+				script{
+					docker.withRegistry('', 'dockerhub') {
+						dockerImage.push();
+						dockerImage.push('latest')
+
+					}
+
+				}
+					
+
+			}
+		}
+
 	} 
 	post {
 		always {
