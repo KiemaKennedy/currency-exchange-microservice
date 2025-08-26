@@ -28,7 +28,12 @@
 // use pipeline, MUST HAVE stages, stage, steps
 pipeline {
 
-	agent any
+	agent {
+		docker {
+		image 'maven:3.9.6-eclipse-temurin-11'
+		args '-v $HOME/.m2:/root/.m2'   // cache dependencies
+		}
+  	}
 
 	environment {
 		dockerHome = tool 'myDocker'
