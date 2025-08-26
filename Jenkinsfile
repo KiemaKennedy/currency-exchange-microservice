@@ -31,18 +31,21 @@ pipeline {
 
 	// Use a Docker image as an agent
 	agent {
-    docker {
-        image 'maven:3.9.3-eclipse-temurin-17'
-       
-    }
+		docker {
+			image 'maven:3.9.3-eclipse-temurin-17'
+		
+		}
 	}
 
 	stages {
 		stage('Build') {
 			steps {
 				sh "mvn --version"
-				echo "Another Step"
-				echo "Last Step"
+				sh "node --version"
+				// Variables
+				echo "$PATH"
+				echo "BUILD NUMBER ${env.BUILD_NUMBER}"
+				 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
 			}
 		}
 
